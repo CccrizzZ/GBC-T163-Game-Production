@@ -81,6 +81,9 @@
     <ClCompile Include="Explosion.cpp">
       <Filter>GameSource</Filter>
     </ClCompile>
+    <ClCompile Include="GameTitleState.cpp">
+      <Filter>GameSource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UnCopyable.h">
@@ -147,6 +150,9 @@
       <Filter>GameSource</Filter>
     </ClInclude>
     <ClInclude Include="Explosion.h">
+      <Filter>GameSource</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTitleState.h">
       <Filter>GameSource</Filter>
     </ClInclude>
   </ItemGroup>

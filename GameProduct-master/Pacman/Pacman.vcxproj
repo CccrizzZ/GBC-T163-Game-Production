@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{6489C9CC-5F2E-49E9-85D7-1E64331FFA0A}</ProjectGuid>
     <RootNamespace>Pacman</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -76,11 +76,11 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Matth\Documents\SDL\SDL2-2.0.8\SDL2-2.0.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SDL\SDL2_ttf-2.0.14\include;C:\SDL\SDL2_mixer-2.0.4\include;C:\SDL\SDL2-2.0.8\include;C:\SDL\SDL2_image-2.0.4\include;C:\SDL\SDL2-2.0.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\Matth\Documents\SDL\SDL2-2.0.8\SDL2-2.0.8\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\SDL\SDL2_mixer-2.0.4\lib\x86;C:\SDL\SDL2-2.0.8\lib\x86;C:\SDL\SDL2_image-2.0.4\lib\x86;C:\SDL\SDL2_ttf-2.0.14\lib\x86;C:\SDL\SDL2-2.0.8\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -90,10 +90,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Matth\Documents\Saberbomb_GhostInvaders_Alpha\GameProduct-master\GameProduct-master\SDL\SDL2-2.0.8\SDL2-2.0.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SDL\SDL2_ttf-2.0.14\include;C:\SDL\SDL2_mixer-2.0.4\include;C:\SDL\SDL2-2.0.8\include;C:\SDL\SDL2_image-2.0.4\include;C:\SDL\SDL2-2.0.8\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\Matth\Documents\Saberbomb_GhostInvaders_Alpha\GameProduct-master\GameProduct-master\SDL\SDL2-2.0.8\SDL2-2.0.8\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\SDL\SDL2_mixer-2.0.4\lib\x86;C:\SDL\SDL2-2.0.8\lib\x86;C:\SDL\SDL2_image-2.0.4\lib\x86;C:\SDL\SDL2_ttf-2.0.14\lib\x86;C:\SDL\SDL2-2.0.8\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -141,6 +141,7 @@
     <ClCompile Include="SDL_GameStateManager.cpp" />
     <ClCompile Include="SDL_Image.cpp" />
     <ClCompile Include="SDL_Timer.cpp" />
+    <ClCompile Include="GameTitleState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bullets.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="SDL_Timer.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Size.h" />
+    <ClInclude Include="GameTitleState.h" />
     <ClInclude Include="UnCopyable.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>

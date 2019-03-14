@@ -43,8 +43,9 @@ public:
 	bool CollisionCheck(SDL_Rect a, SDL_Rect b)
 	{
 		bool collision = false;
-		if ((a.x < b.x + b.w) && (a.x + a.w > b.x) && (a.y + a.h > b.y) && (a.y < b.y + b.h))
+		if ((a.x < b.x + b.w) && (a.x + a.w > b.x) && (a.y + a.h > b.y) && (a.y < b.y + b.h)){
 			collision = true;
+		}
 		return collision;
 	}
 };
