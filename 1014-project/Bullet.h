@@ -36,7 +36,7 @@ public:
 	void Update();
 	void Render();
 	void Clean();
-	
+
 	// GetBullet location
 	Vector2& GetBulletLocation(){ return bLocation; }
 

@@ -15,7 +15,6 @@ public:
 	Player(float px, float py){
 		pDestR.x = px;
 		pDestR.y = py;
-		isDead = false;
 	}
 
 	// Player rect
@@ -28,8 +27,6 @@ public:
 	// Player speed
 	int pSpeed;
 
-	// is Dead
-	bool isDead;
 
 	// Player location
 	Vector2 pLocation;
@@ -45,7 +42,7 @@ public:
 	void Render();
 	void Update();
 	void Clean();
-	
+
 	// Get all bullets
 	vector<Bullet*>& GetBullets() { return m_vBullets; }
 

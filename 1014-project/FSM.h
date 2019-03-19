@@ -63,6 +63,7 @@ public:
 	void Exit();
 	void Resume() { cout << "Resuming Game..." << '\n'; }
 
+
 	// Sound effects
 	enum sfx { fire, hit, pew, powerup1, powerup2 };
 
@@ -71,7 +72,11 @@ public:
 	SDL_Texture* bgText;
 	SDL_Rect bgRect;
 
+	// This bool prevents CollisionCheck after game stopped
 	bool ingame;
+
+	// Player dead bool
+	bool isDead;
 
 	// Player object
 	Player* p;
@@ -84,13 +89,13 @@ public:
 
 	// Score board
 	int score;
+	string buff;
+	const char* currScore;
 	TTF_Font* scoreFont;
 	SDL_Color scoreColor = {255,255,255,255};
 	SDL_Surface* scoreSurf;
 	SDL_Texture* scoreText;
 	SDL_Rect sRect;
-	string buff;
-	const char* currScore;
 
 	// CollisionCheck
 	bool CollisionCheck(SDL_Rect a, SDL_Rect b);
@@ -141,7 +146,7 @@ public:
 	void Resume() {}
 	// Buttons
 	enum lbtn { menu };
-
+	enum lsfx { death };
 	// Logo
 	SDL_Rect LsrcR, LdestR;
 	SDL_Surface* LostSurf;

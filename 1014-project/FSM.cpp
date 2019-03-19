@@ -145,6 +145,7 @@ void GameState::Enter(){
 
 	// Ingame bool used to stop CollisionCheck
 	ingame = true;
+	isDead = false;
 
 	// Load all music and sfx
 	Game::Instance()->GetAM()->LoadMusic("aud/gameTheme.mp3");
@@ -186,131 +187,143 @@ void GameState::Enter(){
 
 
 void GameState::Update(){
-	// Clear score cache
-	SDL_DestroyTexture(scoreText);
-	SDL_FreeSurface(scoreSurf);
+	// Quit game if player is dead
+	if (isDead) {
+		// Dead
+		Game::Instance()->GetFSM()->ChangeState(new LoseState());
 
-	// Update score board according to the score int
-	scoreSurf = TTF_RenderText_Solid( scoreFont, to_string(score).c_str(), scoreColor);
-	scoreText = SDL_CreateTextureFromSurface(Game::Instance() -> GetRenderer(), scoreSurf);
-
-
-	// Update Player
-	p -> Update();
-
-
-	// Update EnemyManager
-	eManger -> Update();
-
-
-	// Update score board
-	sRect.w = 75;
-	sRect.h = 50;
-
-	// Update background
-	bgRect.w = 2048;
-	bgRect.h = 769;
-
-	// if reached the end of the background Rect, reload it
-	if (bgRect.x < -1024){
-    bgRect.x = 0;
-  }else{
-		// else move the background towards left
-		bgRect.x -= 1;
-	}
-
-
-
-
-
-
-
-	// Pause & Title
-	if (Game::Instance()->KeyDown(SDL_SCANCODE_P) == 1){
-		// Press "P" to go into PauseState
-		Game::Instance()->GetFSM()->PushState(new PauseState());
-	}else if (Game::Instance()->KeyDown(SDL_SCANCODE_ESCAPE) == 1){
-		// Press "Esc" to go into TitleState
-		Game::Instance()->GetFSM()->ChangeState(new TitleState());
 		// Turn ingame flag to false prevent CollisionCheck after exiting
 		ingame = false;
-	}
+
+	}else{
+
+		// Clear score cache
+		SDL_DestroyTexture(scoreText);
+		SDL_FreeSurface(scoreSurf);
+
+		// Update score board according to the score int
+		scoreSurf = TTF_RenderText_Solid( scoreFont, to_string(score).c_str(), scoreColor);
+		scoreText = SDL_CreateTextureFromSurface(Game::Instance() -> GetRenderer(), scoreSurf);
+
+
+		// Update Player
+		p -> Update();
+
+
+		// Update EnemyManager
+		eManger -> Update();
+
+
+		// Update score board
+		sRect.w = 75;
+		sRect.h = 50;
+
+		// Update background
+		bgRect.w = 2048;
+		bgRect.h = 769;
+
+		// if reached the end of the background Rect, reload it
+		if (bgRect.x < -1024){
+			bgRect.x = 0;
+		}else{
+			// else move the background towards left
+			bgRect.x -= 1;
+		}
 
 
 
-	// Player movement
-	if (Game::Instance()->KeyDown(SDL_SCANCODE_W) == 1 && p -> pDestR.y >= 0) {
-		p->pDestR.y -= p->pSpeed;
-	}else if (Game::Instance()->KeyDown(SDL_SCANCODE_S) == 1 && p -> pDestR.y <= 700) {
-		p->pDestR.y += p->pSpeed;
-	}
+		// Pause & Title
+		if (Game::Instance()->KeyDown(SDL_SCANCODE_P) == 1){
+			// Press "P" to go into PauseState
+			Game::Instance()->GetFSM()->PushState(new PauseState());
+		}else if (Game::Instance()->KeyDown(SDL_SCANCODE_ESCAPE) == 1){
+			// Press "Esc" to go into TitleState
+			Game::Instance()->GetFSM()->ChangeState(new TitleState());
+			// Turn ingame flag to false prevent CollisionCheck after exiting
+			ingame = false;
+		}
 
 
 
-	// Player firing
-	if (Game::Instance()->KeyDown(SDL_SCANCODE_SPACE) == 1 && canFire) {
-
-		// Play fire sound effect
-		Game::Instance()->GetAM()->PlaySound(sfx::pew);
-
-		// Spawn bullet
-		p -> SpawnBullet();
+		// Player movement
+		if (Game::Instance()->KeyDown(SDL_SCANCODE_W) == 1 && p -> pDestR.y >= 0) {
+			p->pDestR.y -= p->pSpeed;
+		}else if (Game::Instance()->KeyDown(SDL_SCANCODE_S) == 1 && p -> pDestR.y <= 700) {
+			p->pDestR.y += p->pSpeed;
+		}
 
 
-		// flag to false
-		canFire = false;
 
-	}else if (Game::Instance()->KeyDown(SDL_SCANCODE_SPACE) == 0) {
-		// If key up turn flag to true
-		canFire = true;
-	}
+		// Player firing
+		if (Game::Instance()->KeyDown(SDL_SCANCODE_SPACE) == 1 && canFire) {
 
-	// Update all explosion
-	for (int i = 0; i < vExplosion.size(); i++) {
-		vExplosion[i] -> Update();
-	}
+			// Play fire sound effect
+			Game::Instance()->GetAM()->PlaySound(sfx::pew);
 
-	// Player Bullet Collision with enemy
-	if (ingame) {
-		for (int b = 0; b < p -> GetBullets().size(); b++) {
-			for (int e = 0; e < eManger -> GetEnemies().size(); e++) {
-				// If bullet collide with enemy
-				if (CollisionCheck(p -> GetBullets()[b] -> bDestR, eManger -> GetEnemies()[e] -> eDestR)) {
-
-					// Delete the bullet
-					p -> GetBullets()[b] = nullptr;
-					p -> GetBullets().erase(p -> GetBullets().begin() + b);
-
-					// Create explosion
-					vExplosion.push_back(new Explosion(eManger -> GetEnemies()[e] -> eDestR.x, eManger -> GetEnemies()[e] -> eDestR.y));
+			// Spawn bullet
+			p -> SpawnBullet();
 
 
-					if (eManger -> GetEnemies()[e] -> Etype == 0) {
-						score += 10;
-					}else if (eManger -> GetEnemies()[e] -> Etype == 1) {
-						score += 20;
-					}else if (eManger -> GetEnemies()[e] -> Etype == 2) {
-						score += 25;
-					}
+			// flag to false
+			canFire = false;
+
+		}else if (Game::Instance()->KeyDown(SDL_SCANCODE_SPACE) == 0) {
+			// If key up turn flag to true
+			canFire = true;
+		}
 
 
-					// Play explosion sfx
-					Game::Instance()->GetAM()->PlaySound(sfx::hit);
+		// Update all explosion
+		for (int i = 0; i < vExplosion.size(); i++) {
+			vExplosion[i] -> Update();
+		}
 
-					// Delete the enemy
-					eManger -> GetEnemies()[e] = nullptr;
-					eManger -> GetEnemies().erase(eManger -> GetEnemies().begin() + e);
-	        break;
+		if (ingame) {
+
+			// Collision between enemy and player
+			for (int i = 0; i < eManger -> GetEnemies().size(); i++) {
+				if (CollisionCheck(eManger -> GetEnemies()[i] -> eDestR, p -> pDestR)) {
+					isDead = true;
 				}
 			}
+
+			// Player Bullet Collision with enemy
+			for (int b = 0; b < p -> GetBullets().size(); b++) {
+				for (int e = 0; e < eManger -> GetEnemies().size(); e++) {
+					// If bullet collide with enemy
+					if (CollisionCheck(p -> GetBullets()[b] -> bDestR, eManger -> GetEnemies()[e] -> eDestR)) {
+
+						// Delete the bullet
+						p -> GetBullets()[b] = nullptr;
+						p -> GetBullets().erase(p -> GetBullets().begin() + b);
+
+						// Create explosion
+						vExplosion.push_back(new Explosion(eManger -> GetEnemies()[e] -> eDestR.x, eManger -> GetEnemies()[e] -> eDestR.y));
+
+
+						if (eManger -> GetEnemies()[e] -> Etype == 0) {
+							score += 10;
+						}else if (eManger -> GetEnemies()[e] -> Etype == 1) {
+							score += 20;
+						}else if (eManger -> GetEnemies()[e] -> Etype == 2) {
+							score += 25;
+						}
+
+
+						// Play explosion sfx
+						Game::Instance()->GetAM()->PlaySound(sfx::hit);
+
+						// Delete the enemy
+						eManger -> GetEnemies()[e] = nullptr;
+						eManger -> GetEnemies().erase(eManger -> GetEnemies().begin() + e);
+						break;
+					}
+				}
+			}
+			p -> GetBullets().shrink_to_fit();
+			eManger -> GetEnemies().shrink_to_fit();
 		}
-		p -> GetBullets().shrink_to_fit();
-		eManger -> GetEnemies().shrink_to_fit();
 	}
-
-
-
-
 }
 
 
@@ -464,25 +477,25 @@ void PauseState::Exit(){
 void LoseState::Enter(){
 	cout << "Entering LoseState..." << '\n';
 
-	// // Load death sound and play it
-	// Game::Instance()->GetAM()->LoadSound("audio/death.wav");
-	// Game::Instance()->GetAM()->PlaySound(Lsfx::death);
+	// Load death sound and play it
+	Game::Instance()->GetAM()->LoadSound("aud/death.wav");
+	Game::Instance()->GetAM()->PlaySound(lsfx::death);
 
 	// Load button
-	lButtons.push_back(new Button("img/main-menu.png", { 312,450,205,60 }));
+	lButtons.push_back(new Button("img/main-menu.png", { 409,450,205,60 }));
 
-	// // Load the Logo
-	// LostSurf = IMG_Load("img/wasted.png");
-	// LostText = SDL_CreateTextureFromSurface(Game::Instance()->GetRenderer(), LostSurf);
+	// Load the Logo
+	LostSurf = IMG_Load("img/wasted.png");
+	LostText = SDL_CreateTextureFromSurface(Game::Instance()->GetRenderer(), LostSurf);
 
 }
 
 
 void LoseState::Update(){
 	// Logo size and position
-	LdestR.h = 100;
-	LdestR.w = 500;
-	LdestR.x = 262;
+	LdestR.h = 95;
+	LdestR.w = 356;
+	LdestR.x = 334;
 	LdestR.y = 200;
 
 	// Button Update
@@ -499,12 +512,15 @@ void LoseState::Update(){
 void LoseState::Render(){
 	SDL_SetRenderDrawColor(Game::Instance()->GetRenderer(), 40, 40, 40, 255);
 	SDL_RenderClear(Game::Instance()->GetRenderer());
-	// // Logo
-	// SDL_RenderCopy(Game::Instance()->GetRenderer(), LostText, NULL, &LdestR);
-	// // Renders all the buttons
-	// for (int i = 0; i < (int)lButtons.size(); i++){
-	// 	lButtons[i]->Render();
-	// }
+
+	// Logo
+	SDL_RenderCopy(Game::Instance()->GetRenderer(), LostText, NULL, &LdestR);
+
+	// Renders all the buttons
+	for (int i = 0; i < (int)lButtons.size(); i++){
+		lButtons[i]->Render();
+	}
+
 	State::Render();
 }
 
