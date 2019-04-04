@@ -1,0 +1,36 @@
+﻿  FSM.cpp
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\player.h(16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\player.h(17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\enemy.h(42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\enemy.h(43): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\bullet.h(16): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\bullet.h(17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\bullet.h(23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\bullet.h(24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\bullet.h(66): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\bullet.h(67): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\explosion.h(17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\explosion.h(18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\explosion.h(19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\explosion.h(20): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\items.h(22): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\items.h(23): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(317): warning C4018: '<': signed/unsigned mismatch
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(335): warning C4018: '<': signed/unsigned mismatch
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(338): warning C4018: '<': signed/unsigned mismatch
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(346): warning C4018: '<': signed/unsigned mismatch
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(352): warning C4018: '<': signed/unsigned mismatch
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(353): warning C4018: '<': signed/unsigned mismatch
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(368): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(367): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(387): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(389): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(408): warning C4018: '<': signed/unsigned mismatch
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(424): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(423): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(450): warning C4018: '<': signed/unsigned mismatch
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(475): warning C4018: '<': signed/unsigned mismatch
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(504): warning C4018: '<': signed/unsigned mismatch
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(509): warning C4018: '<': signed/unsigned mismatch
+c:\users\tech\desktop\gbc-t163-game-production\ghostinvaders_beta\fsm.cpp(539): warning C4018: '<': signed/unsigned mismatch
+  1014-project.vcxproj -> C:\Users\Tech\Desktop\GBC-T163-Game-Production\GhostInvaders_Beta\Debug\1014-project.exe
